@@ -4,20 +4,18 @@ namespace Entity.Repository
 {
     public class TeacherRepository
     {
-        public List<Teacher> Teachers = new List<Teacher>(){
-            new() { Id = Guid.NewGuid(), Name = "Reuber", DisciplinesTaught = new DisciplineRepository().Get(new string[]{ "SD" }) },
-            new() { Id = Guid.NewGuid(), Name = "Eurinardo", DisciplinesTaught = new DisciplineRepository().Get(new string[] { "LFA", "EDA", "PAA" }) },
-            new() { Id = Guid.NewGuid(), Name = "Bonfim", DisciplinesTaught = new DisciplineRepository().Get(new string[] { "IA", "CG" }) },
-            new() { Id = Guid.NewGuid(), Name = "Alexandre", DisciplinesTaught = new DisciplineRepository().Get(new string[] { "LOGICA" }) },
-            new() { Id = Guid.NewGuid(), Name = "Leticia", DisciplinesTaught = new DisciplineRepository().Get(new string[] { "INGLÊS" }) }
+        public static List<Teacher> Teachers = new List<Teacher>(){
+            new() { Id = Guid.NewGuid(), Name = "Reuber",    DisciplinesTaught = DisciplineRepository.Get(new string[] { "SD" }) },
+            new() { Id = Guid.NewGuid(), Name = "Eurinardo", DisciplinesTaught = DisciplineRepository.Get(new string[] { "LFA", "EDA", "PAA" }) },
+            new() { Id = Guid.NewGuid(), Name = "Bonfim",    DisciplinesTaught = DisciplineRepository.Get(new string[] { "IA", "CG" }) },
         };
 
-        public Teacher Get(string name)
+        public static List<Teacher> GetAll()
         {
-            return Teachers.FirstOrDefault(x => x.Name == name);
+            return Teachers;
         }
 
-        public Teacher GetRandom()
+        public static Teacher GetRandom()
         {
             Random rand = new Random(DateTime.Now.Millisecond);
 

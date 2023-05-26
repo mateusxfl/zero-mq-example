@@ -2,20 +2,18 @@
 
 namespace Entity.Repository
 {
-    public class DisciplineRepository
+    public static class DisciplineRepository
     {
-        public List<Discipline> Disciplines = new List<Discipline>(){
-            new() {Id = Guid.NewGuid(), Name = "SD"},
-            new() {Id = Guid.NewGuid(), Name = "LFA"},
-            new() {Id = Guid.NewGuid(), Name = "EDA"},
-            new() {Id = Guid.NewGuid(), Name = "PAA"},
-            new() {Id = Guid.NewGuid(), Name = "IA"},
-            new() {Id = Guid.NewGuid(), Name = "CG"},
-            new() {Id = Guid.NewGuid(), Name = "LOGICA"},
-            new() {Id = Guid.NewGuid(), Name = "INGLÊS"}
+        public static List<Discipline> Disciplines = new List<Discipline>(){
+            new() { Id = Guid.NewGuid(), Name = "SD"  },
+            new() { Id = Guid.NewGuid(), Name = "LFA" },
+            new() { Id = Guid.NewGuid(), Name = "EDA" },
+            new() { Id = Guid.NewGuid(), Name = "PAA" },
+            new() { Id = Guid.NewGuid(), Name = "IA"  },
+            new() { Id = Guid.NewGuid(), Name = "CG"  }
         };
 
-        public List<Discipline> Get(string[] disciplines)
+        public static List<Discipline> Get(string[] disciplines)
         {
             List<Discipline> result = new List<Discipline>();
 
@@ -27,7 +25,7 @@ namespace Entity.Repository
             return result;
         }
 
-        public Discipline GetDisciplineByTeacher(Teacher teacher)
+        public static Discipline GetDisciplineByTeacher(Teacher teacher)
         {
             Random rand = new Random(DateTime.Now.Millisecond);
 
