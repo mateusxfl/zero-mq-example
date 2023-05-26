@@ -1,5 +1,6 @@
 ﻿using Entity.Entities;
 using Entity.Repository;
+using Entity.Utils;
 using NetMQ;
 using NetMQ.Sockets;
 
@@ -15,7 +16,7 @@ static void Publisher()
 
     using (var publisher = new PublisherSocket())
     {
-        Console.WriteLine($"Publisher socket ON at {DateTime.Now.ToString("HH:mm:ss.fff")} \n");
+        Utils.WriteLineWithColor($"Publisher socket ON at {DateTime.Now.ToString("HH:mm:ss.fff")} \n", ConsoleColor.Red);
 
         publisher.Bind("tcp://*:5555");
 
@@ -33,7 +34,7 @@ static void Publisher()
 
             publisher.SendMoreFrame(topic).SendFrame(message);
 
-            Console.WriteLine($"Publisher [{DateTime.Now.ToString("HH:mm:ss.fff")}]: [{topic}] - {message} \n");
+            Utils.WriteLineWithColor($"Publisher [{DateTime.Now.ToString("HH:mm:ss.fff")}]: [{topic}] - {message} \n", discipline.Color);
 
             Thread.Sleep(2000);
         }

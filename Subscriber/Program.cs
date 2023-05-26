@@ -1,5 +1,6 @@
 ﻿using Entity.Entities;
 using Entity.Repository;
+using Entity.Utils;
 using NetMQ;
 using NetMQ.Sockets;
 
@@ -31,7 +32,7 @@ static void Subscriber(object entity)
 
             subscriber.Subscribe(topic);
 
-            Console.WriteLine($"Subscriber {student.Name} joined the channel {discipline.Name} at {DateTime.Now.ToString("HH:mm:ss.fff")}. \n");
+            Utils.WriteLineWithColor($"Subscriber {student.Name} joined the channel {discipline.Name} at {DateTime.Now.ToString("HH:mm:ss.fff")}. \n", discipline.Color);
         }
 
         while (true)
@@ -39,7 +40,8 @@ static void Subscriber(object entity)
             string messageTopicReceived = subscriber.ReceiveFrameString();
             string messageReceived = subscriber.ReceiveFrameString();
 
-            Console.WriteLine($"Subscriber [{DateTime.Now.ToString("HH:mm:ss.fff")}]: [{student.Name}] - [{messageTopicReceived}] - {messageReceived} \n");
+            Utils.WriteLineWithColor($"Subscriber [{DateTime.Now.ToString("HH:mm:ss.fff")}]: [{student.Name}] - [{messageTopicReceived}] - {messageReceived} \n", 
+                DisciplineRepository.GetDisciplineByName(messageTopicReceived).Color);
         }
     }
 }

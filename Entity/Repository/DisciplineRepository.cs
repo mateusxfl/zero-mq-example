@@ -5,12 +5,12 @@ namespace Entity.Repository
     public static class DisciplineRepository
     {
         public static List<Discipline> Disciplines = new List<Discipline>(){
-            new() { Id = Guid.NewGuid(), Name = "SD"  },
-            new() { Id = Guid.NewGuid(), Name = "LFA" },
-            new() { Id = Guid.NewGuid(), Name = "EDA" },
-            new() { Id = Guid.NewGuid(), Name = "PAA" },
-            new() { Id = Guid.NewGuid(), Name = "IA"  },
-            new() { Id = Guid.NewGuid(), Name = "CG"  }
+            new() { Id = Guid.NewGuid(), Name = "SD" , Color = ConsoleColor.DarkMagenta },
+            new() { Id = Guid.NewGuid(), Name = "LFA", Color = ConsoleColor.DarkCyan },
+            new() { Id = Guid.NewGuid(), Name = "EDA", Color = ConsoleColor.DarkGreen },
+            new() { Id = Guid.NewGuid(), Name = "PAA", Color = ConsoleColor.DarkYellow },
+            new() { Id = Guid.NewGuid(), Name = "IA" , Color = ConsoleColor.DarkBlue },
+            new() { Id = Guid.NewGuid(), Name = "CG" , Color = ConsoleColor.DarkRed }
         };
 
         public static List<Discipline> Get(string[] disciplines)
@@ -23,6 +23,11 @@ namespace Entity.Repository
             }
 
             return result;
+        }
+
+        public static Discipline GetDisciplineByName(string name)
+        {
+            return Disciplines.FirstOrDefault(x => x.Name == name);
         }
 
         public static Discipline GetDisciplineByTeacher(Teacher teacher)
