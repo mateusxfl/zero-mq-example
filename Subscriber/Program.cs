@@ -13,10 +13,10 @@ foreach (Student student in StudentRepository.GetAll())
     subscriberThreads.Last().Start(student);
 }
 
-/*foreach (Thread thread in subscriberThreads)
+foreach (Thread thread in subscriberThreads)
 {
     thread.Join();
-}*/
+}
 
 static void Subscriber(object entity)
 {

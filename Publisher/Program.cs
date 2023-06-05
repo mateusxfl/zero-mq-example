@@ -8,7 +8,7 @@ using NetMQ.Sockets;
 Thread publisherThread = new Thread(Publisher);
 publisherThread.Start();
 
-// publisherThread.Join();
+publisherThread.Join();
 
 static void Publisher()
 {
@@ -20,7 +20,7 @@ static void Publisher()
 
         publisher.Bind("tcp://*:5555");
 
-        for (int i = 1; i <= 5; i++)
+        for (int i = 1; i <= 10; i++)
         {
             Teacher randomTeacher = TeacherRepository.GetRandom();
 
